@@ -1,0 +1,83 @@
+<div class="container">
+    <div class="py-5 text-center">
+        <h2>Registrar Usuario</h2>
+    </div>
+
+    <div class="row align-items-center">
+        <form [formGroup]="usuarioForm" (ngSubmit)="submitForm()">
+           <div class="row">
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label for="name">Nombres</label>
+                    <input class="form-control"  type="text" id="name" name="name" formControlName="Nombres" placeholder="escriba su nombre"/>
+                </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label for="lastName">Apellidos</label>
+                        <input class="form-control"  type="text" id="lastName" name="lastName" formControlName="Apellidos" placeholder="escriba su apellido"/>
+                    </div>
+                    </div>
+           </div>
+           <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="genre">Genero</label>
+                    <!-- <input class="form-control"  type="text" id="genre" name="genre" formControlName="genre" placeholder="escriba su apellido"/> -->
+                    <select class="form-control" id="genre" formControlName="Genero" name="genre">
+                        <option disabled selected value="empty">Elige in genero</option>
+                        <option value="M">Masculino</option>
+                        <option value="F">Femenino</option>
+                    </select> 
+                </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="document">Cedula</label>
+                        <input type="text" mask="000-0000000-0" class="form-control" id="document" name="document" formControlName="Cedula" placeholder="escriba su cedula"/>
+                    </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="document">Fecha Nacimiento</label>
+                            <input class="form-control"  type="date" id="birthDate" name="birthDate" formControlName="FechaNacimiento"/>
+                        </div>
+                        </div>
+           </div> <!--row 2-->
+           <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="departament">Departamento</label>
+                    <select class="form-control" id="departament" formControlName="IdDepartamento" name="departament">
+                        <option *ngFor="let op of departamentoList" [value]="op.departamentoID">{{op.nombre}}</option>
+                    </select> 
+                </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="cargo">Cargo</label>
+                        <input class="form-control"  type="text" id="job" name="job" formControlName="Cargo"/>
+                    </div>
+                    </div>
+
+                    
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="supervisor">Supervisor inmediato</label>
+                        <input class="form-control"  type="text" id="supervisor" name="supervisor" formControlName="SupervisorInmediato"/>
+                    </div>
+                    </div>
+           </div>
+
+           
+           <div class="row">
+            <div class="col-md-3">
+                <button [disabled]="usuarioForm.invalid" type="submit" class="btn btn-outline-success btn-block" >Guardar</button>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
